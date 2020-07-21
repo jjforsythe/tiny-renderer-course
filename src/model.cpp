@@ -52,7 +52,7 @@ Model::Model(const char *filename)
 			for (int i = 0; i < t.size(); i++)
 				f.push_back(t[i]);
 			faces.push_back(f);
-		}		
+		}
 	}
 	cout << "# vertices: " << n_vertices() << endl;
 	cout << "# faces: " << n_faces() << endl;
@@ -82,12 +82,12 @@ vector<int> Model::face(int index) {
 	return faces[index];
 }
 
-void Model::load_texture(std::string filename, const char *suffix, TGAImage &img) {
-	std::string texfile(filename);
+void Model::load_texture(string filename, const char *suffix, TGAImage &img) {
+	string texfile(filename);
 	size_t dot = texfile.find_last_of(".");
-	if (dot != std::string::npos) {
-		texfile = texfile.substr(0, dot) + std::string(suffix);
-		std::cerr << "texture file " << texfile << " loading " << (img.read_tga_file(texfile.c_str()) ? "ok" : "failed") << std::endl;
+	if (dot != string::npos) {
+		texfile = texfile.substr(0, dot) + string(suffix);
+		cerr << "texture file " << texfile << " loading " << (img.read_tga_file(texfile.c_str()) ? "" : "failed\n");
 		img.flip_vertically();
 	}
 }
